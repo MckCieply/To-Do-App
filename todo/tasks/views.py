@@ -18,3 +18,8 @@ def index(request):
 
     constext = {'tasks': tasks, 'form':form}
     return render(request, 'tasks/list.html', constext)
+
+def updateTask(request, pk):
+    task = Task.objects.get(id=pk)
+    
+    return render(request, 'tasks/update_task.html')
