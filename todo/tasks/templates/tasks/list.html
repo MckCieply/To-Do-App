@@ -1,8 +1,26 @@
-<h3>TO DO</h3>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+</head>
+<body>
+    <h3>TO DO</h3>
+
+    <form method="POST" action="/">
+        {% csrf_token %}
+        {{form.title}}
+        <input type="submit" name="Create task">
+    </form>
 
 
-{% for task in tasks %}
-    <div>
-        <p>{{task}}</p>
-    </div>
-{% endfor %}
+    {% for task in tasks %}
+        <div>
+            <p>{{task}}</p>
+        </div>
+    {% endfor %} 
+</body>
+</html>
