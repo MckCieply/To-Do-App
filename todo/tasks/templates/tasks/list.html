@@ -15,18 +15,18 @@
         <form method="POST" action="/">
             {% csrf_token %}
             {{form.title}}
-            <input class="btn btn-info" type="submit" name="Create task" value="Create Task">
+            <input class="btn btn-primary" type="submit" name="Create task" value="Create Task">
         </form>
 
         <div class ="todo-list">
 
             {% for task in tasks %}
                 <div class="item-row">
-                    <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+                    <a class="btn btn-sm btn-primary" href="{% url 'update_task' task.id %}">Update</a>
                     <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
 
                     {% if task.complete == True %}
-                    <strike>{{task}}</strike>
+                    <s>{{task}}</s>
                     {% else %}
                     <span>{{task}}</span>
                     {% endif %}    
