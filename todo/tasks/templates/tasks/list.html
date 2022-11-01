@@ -11,26 +11,29 @@
     <link rel='stylesheet' type='text/css' media='screen' href="{% static '/css/main.css' %}">
 </head>
 <body>
-    <h3>TO DO</h3>
+    <div class="center-column">
+        <form method="POST" action="/">
+            {% csrf_token %}
+            {{form.title}}
+            <input class="btn btn-info" type="submit" name="Create task" value="Create Task">
+        </form>
 
-    <form method="POST" action="/">
-        {% csrf_token %}
-        {{form.title}}
-        <input type="submit" name="Create task">
-    </form>
+        <div class ="todo-list">
 
+            {% for task in tasks %}
+                <div class="item-row">
+                    <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+                    <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
 
-    {% for task in tasks %}
-        <div>
-            <a href="{% url 'update_task' task.id %}">Update</a>
-            <a href="{% url 'delete_task' task.id %}">Delete</a>
-
-            {% if task.complete == True %}
-            <strike>{{task}}</strike>
-            {% else %}
-            <span>{task}</span>
-            {% endif %}            
+                    {% if task.complete == True %}
+                    <strike>{{task}}</strike>
+                    {% else %}
+                    <span>{{task}}</span>
+                    {% endif %}    
+                </div>       
+            {% endfor %}
         </div>
-    {% endfor %} 
+        </div>
+    </div> 
 </body>
 </html>
