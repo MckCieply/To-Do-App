@@ -1,18 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static '/css/main.css' %}">
     <title>You sure?</title>
+    <style>
+    </style>
 </head>
 <body>
-    <p>Are you sure you want to delete "{{item}}" ?</p>
-
-    <a href ="{%url 'list' %}"> Cancel</a>
-    <form method="POST" action="">
-        {% csrf_token %}
-        <input type="submit" name="Confirm">
-    </form>
+    <div class="center-column">
+        <h5>Are you sure you want to delete "{{item}}" task?</h5>
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+                <a class="btn btn-primary "href ="{%url 'list' %}"> Cancel</a>
+                <button class="btn btn-danger"type="submit" name="confirm">Delete</button>
+        </form>
+</div>
 </body>
 </html>
